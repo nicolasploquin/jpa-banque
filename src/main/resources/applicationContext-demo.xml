@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+	">
+	
+	<!-- <context:component-scan base-package="fr.eni.formation.banque.jpa.*" /> -->
+		
+	<bean id="message" class="java.lang.String">
+		<constructor-arg index="0" value="Mon application Spring !"/>
+	</bean>
+
+	<bean id="nomClient" class="java.lang.String">
+		<constructor-arg index="0" value="Scheidt"/>
+	</bean>
+
+	<bean id="cli1" class="fr.eni.formation.banque.Client" >
+		<property name="nom" ref="nomClient"/>
+		<property name="prenom" value="Ben"/>
+	</bean>
+	<!-- <bean id="cli2" class="fr.eni.formation.banque.Client" >
+		<constructor-arg index="0" value="Scheidt"/>
+		<constructor-arg index="1" value="Robert"/>
+	</bean> -->
+	<bean id="clientDao" class="fr.eni.formation.banque.jpa.ClientDaoImpl" scope="singleton" ></bean>
+	
+	
+	
+	<bean id="banqueService" class="fr.eni.formation.banque.BanqueServiceImpl" >
+		<property name="clientDAO" ref="clientDao" />
+	</bean>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+</beans>
+
+
+
+
+
