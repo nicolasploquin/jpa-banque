@@ -8,6 +8,24 @@ import fr.eni.formation.banque.dao.ClientDao;
 public class MainSpring {
 	
 	public static void main(String[] args) {
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext-jpa.xml");
+		
+		ClientDao daoClient = context.getBean(ClientDao.class);
+		Client cli1 = daoClient.create("Durand","Marc");
+		
+//		if(daoClient.readAll().count() < 5) {
+			
+//			Compte cpt1 = new Compte("67890123","Autre compte");
+//			Compte cpt2 = new Livret("78901234","Livret B",2.0);
+//			
+//			daoClient.addCompte(cli1, cpt1);
+//			daoClient.addCompte(cli1, cpt2);
+//		}
+
+		daoClient.readAll().forEach(System.out::println);
+		
+	}
+	public static void main1(String[] args) {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 	
@@ -37,6 +55,8 @@ public class MainSpring {
 		}
 		daoClient.readAll().forEach(System.out::println);
 		
+		
+//		context.close();
 	}
 	
 	

@@ -22,10 +22,12 @@
 		<property name="entityManagerFactory" ref="emfactory" />
 	</bean>
 	
-	<tx:annotation-driven />
+	<tx:annotation-driven transaction-manager="transactionManager"  />
+	
+	<!-- <bean id="persistenceExceptionTranslationPostProcessor"
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" /> -->
 
-	<bean id="persistenceExceptionTranslationPostProcessor"
-		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+	<bean id="clientDao" class="fr.eni.formation.banque.jpa.ClientDaoImpl" />
 
 </beans>
 
